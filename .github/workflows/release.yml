@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         php: [8.1, 8.2, 8.3]
-        laravel: [9.*, 10.*, 11.*]
+        laravel: [9.*, 10.*, 11.*, 12.*]
         include:
           - laravel: 9.*
             testbench: 7.*
@@ -26,8 +26,12 @@ jobs:
             testbench: 8.*
           - laravel: 11.*
             testbench: 9.*
+          - laravel: 12.*
+            testbench: 10.*
         exclude:
           - laravel: 11.*
+            php: 8.1
+          - laravel: 12.*
             php: 8.1
 
     name: Test P${{ matrix.php }} - L${{ matrix.laravel }}
@@ -54,6 +58,9 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     if: success()
+    permissions:
+      contents: write
+      pull-requests: read
     
     steps:
       - name: Checkout code
@@ -80,29 +87,40 @@ jobs:
           fi
 
       - name: Create Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.get_version.outputs.VERSION }}
-          release_name: Release ${{ steps.get_version.outputs.VERSION }}
+          name: Release ${{ steps.get_version.outputs.VERSION }}
           body: |
-            ## Changes in ${{ steps.get_version.outputs.VERSION }}
+            ## 🎉 Laravel MobilePay Vipps Package ${{ steps.get_version.outputs.VERSION }}
             
             ### 🚀 Features
-            - Laravel MobilePay Vipps package with complete payment gateway integration
+            - **Complete MobilePay Vipps Integration** for Laravel 9-12
+            - **Multiple Payment Methods**: ePayment, Checkout, Express, Recurring
+            - **Event-Driven Architecture**: Laravel events for all payment actions
+            - **Secure Webhook Support**: With signature verification
+            - **Developer-Friendly**: Full type hints and comprehensive documentation
             
-            ### 🛠️ Improvements
-            - Support for PHP 8.1-8.3
-            - Support for Laravel 9-11
-            - Comprehensive test suite
+            ### 🌍 Market Coverage
+            - **Norway** (Vipps) - 4.2M users
+            - **Denmark** (MobilePay) - 4.4M users  
+            - **Finland** (MobilePay) - 2.8M users
+            
+            ### 📋 Requirements
+            - PHP 8.1-8.3
+            - Laravel 9-12
+            - Guzzle HTTP 7.0+
             
             ### 📦 Installation
             ```bash
             composer require mrdulal/laravel-vipps
             ```
             
-            See the [README](https://github.com/mrdulal/Vipps-MobilePay/blob/main/README.md) for detailed installation and usage instructions.
+            ### 📚 Documentation
+            See the [README](https://github.com/mrdulal/Vipps-MobilePay/blob/main/README.md) for complete installation and usage instructions.
+            
+            ---
+            **⚠️ Note**: This is an unofficial package developed independently by a solo developer.
           draft: false
           prerelease: false
 
