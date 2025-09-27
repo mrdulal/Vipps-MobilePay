@@ -1,0 +1,51 @@
+name: Health Check
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    name: Repository Health Check
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo, openssl, json
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Check autoload
+        run: composer dump-autoload --optimize
+
+      - name: Run tests
+        run: vendor/bin/phpunit
+
+      - name: Security audit
+        run: composer audit
+
+      - name: Check outdated packages
+        run: composer outdated --direct --major-only || true
+
+      - name: Repository summary
+        run: |
+          echo "## 📊 Repository Health Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Composer validation passed" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Dependencies installed successfully" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Autoload optimization completed" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Test suite executed" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Security audit completed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🎉 **Repository is healthy and ready for production!**" >> $GITHUB_STEP_SUMMARY
