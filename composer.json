@@ -3,11 +3,12 @@
     "description": "Laravel package for MobilePay Vipps payment integration with ePayment, Checkout, Express, and recurring payments support",
     "type": "library",
     "keywords": ["laravel", "vipps", "mobilepay", "payment", "checkout", "express", "recurring", "subscription"],
+    "homepage": "https://github.com/mrdulal/Vipps-MobilePay",
     "license": "MIT",
     "authors": [
         {
             "name": "Mr Dulal",
-            "email": "dulal@example.com"
+            "email": "moi@codebundles.com"
         }
     ],
     "require": {
@@ -48,6 +49,16 @@
         "test": "phpunit",
         "test-coverage": "phpunit --coverage-html coverage"
     },
+    "support": {
+        "issues": "https://github.com/mrdulal/Vipps-MobilePay/issues",
+        "source": "https://github.com/mrdulal/Vipps-MobilePay"
+    },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/mrdulal"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }
