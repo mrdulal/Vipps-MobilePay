@@ -32,10 +32,12 @@ jobs:
         run: composer validate --strict
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-interaction --no-dev
+        run: |
+          composer require "laravel/framework:^11.0" "orchestra/testbench:^9.0" --no-interaction --no-update
+          composer update --prefer-stable --prefer-dist --no-interaction
 
       - name: Run tests
-        run: composer test
+        run: vendor/bin/phpunit
 
       - name: Get the version
         id: get_version

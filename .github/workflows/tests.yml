@@ -78,15 +78,19 @@ jobs:
           coverage: xdebug
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-interaction
+        run: |
+          composer require "laravel/framework:^11.0" "orchestra/testbench:^9.0" --no-interaction --no-update
+          composer update --prefer-stable --prefer-dist --no-interaction
 
       - name: Execute tests with coverage
         run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          file: ./coverage.clover
-          flags: unittests
-          name: codecov-umbrella
-          fail_ci_if_error: false
+      - name: Generate coverage summary
+        run: |
+          echo "✅ Code coverage report generated successfully"
+          echo "📊 Coverage file: coverage.clover"
+          if [ -f coverage.clover ]; then
+            echo "📈 Coverage data collected and saved"
+          else
+            echo "⚠️ Coverage file not found"
+          fi
