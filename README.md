@@ -9,6 +9,8 @@
 
 A comprehensive Laravel package for MobilePay Vipps payment integration with support for all major Vipps payment methods. This package provides a clean, modern API for integrating with the Vipps MobilePay payment platform used across Norway, Denmark, and Finland.
 
+> **⚠️ Important Notice**: This is an **unofficial** package and is not affiliated with, endorsed by, or officially supported by MobilePay or Vipps. This package is developed independently by the community for Laravel developers. For official MobilePay Vipps integration documentation, please visit the [official MobilePay Developer Portal](https://developer.mobilepay.dk/) and [Vipps Developer Portal](https://developer.vippsmobilepay.com/).
+
 ## 🎯 Features
 
 ### Payment Methods
