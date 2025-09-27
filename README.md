@@ -47,7 +47,7 @@ A comprehensive Laravel package for MobilePay Vipps payment integration with sup
 | Requirement | Version | Notes |
 |-------------|---------|-------|
 | **PHP** | 8.1+ | Uses modern PHP features like enums, readonly properties |
-| **Laravel** | 9.0+ | Compatible with Laravel 9, 10, and 11 |
+| **Laravel** | 9.0+ | Compatible with Laravel 9, 10, 11, and 12 |
 | **Guzzle HTTP** | 7.0+ | For API communication |
 | **ext-json** | * | JSON processing |
 | **ext-openssl** | * | SSL/TLS support for API calls |
