@@ -1,11 +1,11 @@
 <?php
 
-namespace SushriDad\LaravelVipps\Tests\Unit;
+namespace Mrdulal\LaravelVipps\Tests\Unit;
 
-use SushriDad\LaravelVipps\Tests\TestCase;
-use SushriDad\LaravelVipps\Services\VippsClient;
-use SushriDad\LaravelVipps\Exceptions\VippsException;
-use SushriDad\LaravelVipps\Exceptions\VippsApiException;
+use Mrdulal\LaravelVipps\Tests\TestCase;
+use Mrdulal\LaravelVipps\Services\VippsClient;
+use Mrdulal\LaravelVipps\Exceptions\VippsException;
+use Mrdulal\LaravelVipps\Exceptions\VippsApiException;
 
 class VippsClientTest extends TestCase
 {

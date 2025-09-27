@@ -1,9 +1,9 @@
 <?php
 
-namespace SushriDad\LaravelVipps\Tests;
+namespace Mrdulal\LaravelVipps\Tests;
 
 use Orchestra\Testbench\TestCase as BaseTestCase;
-use SushriDad\LaravelVipps\VippsServiceProvider;
+use Mrdulal\LaravelVipps\VippsServiceProvider;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -24,7 +24,7 @@ abstract class TestCase extends BaseTestCase
     protected function getPackageAliases($app): array
     {
         return [
-            'Vipps' => 'SushriDad\LaravelVipps\Facades\Vipps',
+            'Vipps' => 'Mrdulal\LaravelVipps\Facades\Vipps',
         ];
     }
 

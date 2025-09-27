@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use SushriDad\LaravelVipps\Http\Controllers\WebhookController;
+use Mrdulal\LaravelVipps\Http\Controllers\WebhookController;
 
 /*
 |--------------------------------------------------------------------------

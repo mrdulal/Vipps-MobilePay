@@ -1,11 +1,18 @@
 # Laravel MobilePay Vipps Package
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/sushridad/laravel-vipps.svg?style=flat-square)](https://packagist.org/packages/sushridad/laravel-vipps)
-[![Total Downloads](https://img.shields.io/packagist/dt/sushridad/laravel-vipps.svg?style=flat-square)](https://packagist.org/packages/sushridad/laravel-vipps)
-[![License](https://img.shields.io/packagist/l/sushridad/laravel-vipps.svg?style=flat-square)](https://packagist.org/packages/sushridad/laravel-vipps)
-[![PHP Version Require](https://img.shields.io/packagist/php-v/sushridad/laravel-vipps.svg?style=flat-square)](https://packagist.org/packages/sushridad/laravel-vipps)
-[![Laravel Version](https://img.shields.io/badge/Laravel-9.0%2B-red.svg?style=flat-square)](https://laravel.com)
-[![Tests](https://img.shields.io/github/actions/workflow/status/sushridad/laravel-vipps/tests.yml?label=tests&style=flat-square)](https://github.com/sushridad/laravel-vipps/actions)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/mrdulal/laravel-vipps.svg?style=flat-square)](https://packagist.org/packages/mrdulal/laravel-vipps)
+[![Total Downloads](https://img.shields.io/packagist/dt/mrdulal/laravel-vipps.svg?style=flat-square)](https://packagist.org/packages/mrdulal/laravel-vipps)
+[![License](https://img.shields.io/packagist/l/mrdulal/laravel-vipps.svg?style=flat-square)](https://packagist.org/packages/mrdulal/laravel-vipps)
+[![PHP Version Require](https://img.shields.io/packagist/php-v/mrdulal/laravel-vipps.svg?style=flat-square)](https://packagist.org/packages/mrdulal/laravel-vipps)
+# Laravel MobilePay Vipps Package
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/mrdulal/laravel-vipps.svg?style=flat-square)](https://packagist.org/packages/mrdulal/laravel-vipps)
+[![Total Downloads](https://img.shields.io/packagist/dt/mrdulal/laravel-vipps.svg?style=flat-square)](https://packagist.org/packages/mrdulal/laravel-vipps)
+[![License](https://img.shields.io/packagist/l/mrdulal/laravel-vipps.svg?style=flat-square)](https://packagist.org/packages/mrdulal/laravel-vipps)
+[![PHP Version Require](https://img.shields.io/packagist/php-v/mrdulal/laravel-vipps.svg?style=flat-square)](https://packagist.org/packages/mrdulal/laravel-vipps)
+[![Laravel Support](https://img.shields.io/badge/Laravel-9%2B-orange.svg?style=flat-square)](https://laravel.com)
+[![Tests](https://img.shields.io/github/actions/workflow/status/mrdulal/laravel-vipps/tests.yml?label=tests&style=flat-square)](https://github.com/mrdulal/laravel-vipps/actions)
+[![Tests](https://img.shields.io/github/actions/workflow/status/mrdulal/laravel-vipps/tests.yml?label=tests&style=flat-square)](https://github.com/mrdulal/laravel-vipps/actions)
 
 A comprehensive Laravel package for MobilePay Vipps payment integration with support for all major Vipps payment methods. This package provides a clean, modern API for integrating with the Vipps MobilePay payment platform used across Norway, Denmark, and Finland.
 
@@ -60,20 +67,20 @@ A comprehensive Laravel package for MobilePay Vipps payment integration with sup
 ### 1. Install via Composer
 
 ```bash
-composer require sushridad/laravel-vipps
+composer require mrdulal/laravel-vipps
 ```
 
 ### 2. Publish Configuration
 
 ```bash
 # Publish configuration file
-php artisan vendor:publish --provider="SushriDad\LaravelVipps\VippsServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Mrdulal\LaravelVipps\VippsServiceProvider" --tag="config"
 
 # Publish migrations
-php artisan vendor:publish --provider="SushriDad\LaravelVipps\VippsServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="Mrdulal\LaravelVipps\VippsServiceProvider" --tag="migrations"
 
 # Publish views (optional)
-php artisan vendor:publish --provider="SushriDad\LaravelVipps\VippsServiceProvider" --tag="views"
+php artisan vendor:publish --provider="Mrdulal\LaravelVipps\VippsServiceProvider" --tag="views"
 ```
 
 ### 3. Run Migrations
@@ -97,12 +104,12 @@ The package uses Laravel's auto-discovery feature. The service provider and faca
 // config/app.php
 'providers' => [
     // ...
-    SushriDad\LaravelVipps\VippsServiceProvider::class,
+    Mrdulal\LaravelVipps\VippsServiceProvider::class,
 ],
 
 'aliases' => [
     // ...
-    'Vipps' => SushriDad\LaravelVipps\Facades\Vipps::class,
+    'Vipps' => Mrdulal\LaravelVipps\Facades\Vipps::class,
 ],
 ```
 
@@ -202,7 +209,7 @@ Vipps requires a webhook endpoint for payment status updates:
 
 ```php
 // routes/web.php or routes/api.php
-Route::post('/vipps/webhook', [\SushriDad\LaravelVipps\Http\Controllers\WebhookController::class, 'handle']);
+Route::post('/vipps/webhook', [\Mrdulal\LaravelVipps\Http\Controllers\WebhookController::class, 'handle']);
 ```
 
 **Register your webhook URL in the Vipps portal:**
@@ -215,7 +222,7 @@ Route::post('/vipps/webhook', [\SushriDad\LaravelVipps\Http\Controllers\WebhookC
 #### ePayment (Standard Payment)
 
 ```php
-use SushriDad\LaravelVipps\Facades\Vipps;
+use Mrdulal\LaravelVipps\Facades\Vipps;
 
 // Create a payment
 $payment = Vipps::ePayment()->create([
@@ -240,7 +247,7 @@ $capture = Vipps::ePayment()->capture($payment['orderId'], [
 #### Express Checkout
 
 ```php
-use SushriDad\LaravelVipps\Facades\Vipps;
+use Mrdulal\LaravelVipps\Facades\Vipps;
 
 // Create express checkout session
 $session = Vipps::express()->create([
@@ -279,7 +286,7 @@ $shareableLink = Vipps::express()->createShareableLink([
 #### Recurring Payments
 
 ```php
-use SushriDad\LaravelVipps\Facades\Vipps;
+use Mrdulal\LaravelVipps\Facades\Vipps;
 
 // Create recurring agreement
 $agreement = Vipps::recurring()->createAgreement([
@@ -457,14 +464,14 @@ Vipps::orderManagement()->sendReceipt('order-123', [
 
 ```php
 // routes/web.php or routes/api.php
-Route::post('/vipps/webhook', [\SushriDad\LaravelVipps\Http\Controllers\WebhookController::class, 'handle']);
+Route::post('/vipps/webhook', [\Mrdulal\LaravelVipps\Http\Controllers\WebhookController::class, 'handle']);
 ```
 
 ### Event Listeners
 
 ```php
 // app/Providers/EventServiceProvider.php
-use SushriDad\LaravelVipps\Events\{
+use Mrdulal\LaravelVipps\Events\{
     PaymentCompleted,
     PaymentCancelled,
     PaymentCaptured,
@@ -502,7 +509,7 @@ protected $listen = [
 
 namespace App\Listeners;
 
-use SushriDad\LaravelVipps\Events\PaymentCompleted;
+use Mrdulal\LaravelVipps\Events\PaymentCompleted;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class HandlePaymentCompleted implements ShouldQueue
@@ -555,7 +562,7 @@ The package fires Laravel events for all major payment actions:
 
 ```php
 // Listen to all Vipps events with a single listener
-Event::listen('SushriDad\LaravelVipps\Events\*', function ($eventName, array $data) {
+Event::listen('Mrdulal\LaravelVipps\Events\*', function ($eventName, array $data) {
     $eventObject = $data[0];
     Log::info("Vipps event fired: {$eventName}", [
         'order_id' => $eventObject->orderId,
@@ -594,8 +601,8 @@ The package provides a comprehensive test suite. Here's how to test your Vipps i
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use SushriDad\LaravelVipps\Facades\Vipps;
-use SushriDad\LaravelVipps\Services\VippsClient;
+use Mrdulal\LaravelVipps\Facades\Vipps;
+use Mrdulal\LaravelVipps\Services\VippsClient;
 use Mockery;
 
 class VippsPaymentTest extends TestCase
@@ -638,7 +645,7 @@ class VippsPaymentTest extends TestCase
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use SushriDad\LaravelVipps\Events\PaymentCompleted;
+use Mrdulal\LaravelVipps\Events\PaymentCompleted;
 use Illuminate\Support\Facades\Event;
 
 class WebhookTest extends TestCase
@@ -679,83 +686,713 @@ class WebhookTest extends TestCase
 </phpunit>
 ```
 
-## Configuration Options
+## 🛠️ Advanced Configuration
 
-The package supports extensive configuration options. See `config/vipps.php` for all available options including:
-
-- API endpoints and timeouts
-- Webhook configuration
-- Logging settings
-- Default payment parameters
-- Error handling options
-
-## Order Management
-
-The package includes comprehensive order management capabilities:
+### Complete Configuration Options
 
 ```php
-// Capture partial amount
+// config/vipps.php
+return [
+    // Environment & Credentials
+    'environment' => env('VIPPS_ENVIRONMENT', 'test'),
+    'client_id' => env('VIPPS_CLIENT_ID'),
+    'client_secret' => env('VIPPS_CLIENT_SECRET'),
+    'subscription_key' => env('VIPPS_SUBSCRIPTION_KEY'),
+    'merchant_serial_number' => env('VIPPS_MERCHANT_SERIAL_NUMBER'),
+
+    // API Endpoints (auto-configured based on environment)
+    'api_endpoints' => [
+        'test' => [
+            'base_url' => 'https://apitest.vipps.no',
+            'ecom_url' => 'https://apitest.vipps.no/ecomm/v2',
+            'checkout_url' => 'https://apitest.vipps.no/checkout/v3',
+            'recurring_url' => 'https://apitest.vipps.no/recurring/v3',
+            'order_management_url' => 'https://apitest.vipps.no/order-management/v1',
+        ],
+        'production' => [
+            'base_url' => 'https://api.vipps.no',
+            'ecom_url' => 'https://api.vipps.no/ecomm/v2',
+            'checkout_url' => 'https://api.vipps.no/checkout/v3',
+            'recurring_url' => 'https://api.vipps.no/recurring/v3',
+            'order_management_url' => 'https://api.vipps.no/order-management/v1',
+        ],
+    ],
+
+    // HTTP Client Settings
+    'http' => [
+        'timeout' => 30,                // Request timeout in seconds
+        'connect_timeout' => 10,        // Connection timeout
+        'verify' => true,               // SSL certificate verification
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+    ],
+
+    // Webhook Security
+    'webhook' => [
+        'secret' => env('VIPPS_WEBHOOK_SECRET'),
+        'tolerance' => 300,             // 5 minutes tolerance for timestamp
+        'verify_signature' => true,     // Enable HMAC signature verification
+    ],
+
+    // Default Payment Settings
+    'defaults' => [
+        'currency' => 'NOK',
+        'country' => 'NO',
+        'language' => 'no',
+        'skip_landing_page' => false,
+        'user_flow' => 'WEB_REDIRECT',
+    ],
+
+    // Recurring Payment Limits
+    'recurring' => [
+        'default_interval' => 'MONTH',
+        'default_interval_count' => 1,
+        'max_amount' => 200000,         // 2000.00 NOK in øre
+        'default_currency' => 'NOK',
+    ],
+
+    // Express Checkout UI
+    'express' => [
+        'enabled' => true,
+        'button_theme' => 'orange',     // orange, white, white-outline
+        'button_size' => 'large',       // small, medium, large
+        'show_on_cart' => true,
+        'show_on_product' => true,
+        'show_on_category' => false,
+    ],
+
+    // Logging & Debugging
+    'logging' => [
+        'enabled' => env('VIPPS_LOGGING_ENABLED', false),
+        'channel' => env('VIPPS_LOG_CHANNEL', 'default'),
+        'level' => env('VIPPS_LOG_LEVEL', 'info'),
+        'log_requests' => true,         // Log API requests
+        'log_responses' => true,        // Log API responses
+        'log_headers' => false,         // Log headers (may contain sensitive data)
+    ],
+
+    // Caching (for access tokens)
+    'cache' => [
+        'enabled' => true,
+        'ttl' => 3600,                  // 1 hour cache TTL
+        'prefix' => 'vipps_',
+        'store' => null,                // Use default cache store
+    ],
+
+    // Error Handling
+    'error_handling' => [
+        'retry_attempts' => 3,
+        'retry_delay' => 1000,          // milliseconds
+        'throw_on_error' => true,
+    ],
+
+    // Feature Toggles
+    'features' => [
+        'epayment' => true,
+        'checkout' => true,
+        'express' => true,
+        'recurring' => true,
+        'order_management' => true,
+        'webhooks' => true,
+    ],
+];
+```
+
+## 🎯 Order Management & Payment Lifecycle
+
+### Payment States & Transitions
+
+```mermaid
+graph LR
+    A[Created] --> B[Reserved]
+    B --> C[Captured]
+    B --> D[Cancelled]
+    C --> E[Refunded]
+    B --> F[Expired]
+```
+
+### Comprehensive Order Management
+
+```php
+// Capture full or partial amount
 $capture = Vipps::orderManagement()->capture('order-123', [
-    'amount' => 5000, // Partial capture
-    'description' => 'Partial shipment'
+    'amount' => 5000,               // Partial capture (original: 10000)
+    'description' => 'Partial shipment - Item 1'
 ]);
 
-// Refund payment
+// Multiple captures are allowed until full amount is captured
+$capture2 = Vipps::orderManagement()->capture('order-123', [
+    'amount' => 5000,               // Remaining amount
+    'description' => 'Final shipment - Item 2'
+]);
+
+// Refund captured payment
 $refund = Vipps::orderManagement()->refund('order-123', [
-    'amount' => 2000,
-    'description' => 'Product return'
+    'amount' => 2000,               // Partial refund
+    'description' => 'Product return - defective item'
 ]);
 
-// Cancel payment
+// Cancel uncaptured payment
 $cancel = Vipps::orderManagement()->cancel('order-123', [
     'description' => 'Order cancelled by customer'
 ]);
 
-// Get payment history
+// Get complete payment history
 $history = Vipps::orderManagement()->getPaymentHistory('order-123');
+// Returns: reservations, captures, refunds, cancellations
+
+// Get current order status
+$status = Vipps::orderManagement()->getOrderStatus('order-123');
 ```
 
-## Error Handling
+### Payment Reservations & Timeouts
 
-The package provides comprehensive error handling:
+| Payment Method | Reservation Period | Auto-Cancel |
+|----------------|-------------------|-------------|
+| **Vipps** | 180 days | Yes |
+| **MobilePay** | 14 days | Yes |
+| **Credit Card** (via Checkout) | 7 days | Yes |
+
+> ⚠️ **Important:** Capture payments before the reservation expires to avoid automatic cancellation.
+
+## ⚠️ Error Handling & Troubleshooting
+
+### Exception Hierarchy
 
 ```php
-use SushriDad\LaravelVipps\Exceptions\VippsException;
-use SushriDad\LaravelVipps\Exceptions\VippsValidationException;
-use SushriDad\LaravelVipps\Exceptions\VippsApiException;
+VippsException                    // Base exception
+├── VippsApiException            // API-related errors
+├── VippsValidationException     // Input validation errors
+└── Custom exceptions...
+```
+
+### Comprehensive Error Handling
+
+```php
+use Mrdulal\LaravelVipps\Exceptions\{VippsException, VippsValidationException, VippsApiException};
 
 try {
     $payment = Vipps::ePayment()->create($paymentData);
 } catch (VippsValidationException $e) {
-    // Handle validation errors
+    // Handle validation errors (400-level client errors)
     $errors = $e->getValidationErrors();
+    
+    foreach ($errors as $field => $messages) {
+        Log::warning("Validation error on {$field}: " . implode(', ', $messages));
+    }
+    
+    return response()->json(['errors' => $errors], 422);
+    
 } catch (VippsApiException $e) {
-    // Handle API errors
+    // Handle API errors (Vipps API returned an error)
     $apiError = $e->getApiError();
+    $statusCode = $e->getCode();
+    
+    Log::error('Vipps API Error', [
+        'status_code' => $statusCode,
+        'error' => $apiError,
+        'message' => $e->getMessage()
+    ]);
+    
+    // Handle specific API errors
+    switch ($statusCode) {
+        case 401:
+            // Unauthorized - check credentials
+            break;
+        case 403:
+            // Forbidden - check permissions
+            break;
+        case 429:
+            // Rate limited - implement backoff
+            break;
+        case 500:
+            // Server error - retry later
+            break;
+    }
+    
 } catch (VippsException $e) {
-    // Handle general Vipps errors
-    $message = $e->getMessage();
+    // Handle general Vipps errors (network issues, etc.)
+    Log::error('Vipps General Error: ' . $e->getMessage());
+    
+} catch (\Exception $e) {
+    // Handle unexpected errors
+    Log::critical('Unexpected error in Vipps integration', [
+        'exception' => $e->getMessage(),
+        'trace' => $e->getTraceAsString()
+    ]);
 }
 ```
 
-## Contributing
+### Common Error Scenarios
 
-Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+#### 1. Authentication Errors
+```php
+// Error: Invalid credentials
+[
+    'code' => 401,
+    'message' => 'Access denied',
+    'details' => 'Invalid client credentials'
+]
 
-## Security Vulnerabilities
+// Solution: Verify your credentials in .env file
+```
 
-Please review our security policy on how to report security vulnerabilities.
+#### 2. Validation Errors
+```php
+// Error: Invalid amount
+[
+    'field' => 'amount',
+    'errors' => ['The amount must be at least 100 øre (1.00 NOK)']
+]
 
-## Credits
+// Solution: Ensure amount is in øre (multiply by 100)
+$amount = 99.50 * 100; // 9950 øre
+```
 
-- [Sushri Dad](https://github.com/sushridad)
+#### 3. Order ID Conflicts
+```php
+// Error: Duplicate order ID
+[
+    'code' => 409,
+    'message' => 'Order ID already exists'
+]
 
-## License
+// Solution: Ensure unique order IDs
+$orderId = 'order-' . time() . '-' . uniqid();
+```
+
+### Debugging Tools
+
+#### Enable Logging
+```env
+VIPPS_LOGGING_ENABLED=true
+VIPPS_LOG_LEVEL=debug
+```
+
+#### View Logs
+```bash
+# View Vipps-specific logs
+tail -f storage/logs/laravel.log | grep -i vipps
+
+# Or use Laravel's log viewer
+php artisan log:monitor
+```
+
+#### Test API Connectivity
+```php
+// Test basic API connectivity
+try {
+    $client = app(VippsClient::class);
+    $token = $client->getAccessToken();
+    echo "✅ API connection successful. Token: " . substr($token, 0, 20) . "...";
+} catch (Exception $e) {
+    echo "❌ API connection failed: " . $e->getMessage();
+}
+```
+
+### Production Checklist
+
+- [ ] **Environment**: Set `VIPPS_ENVIRONMENT=production`
+- [ ] **Credentials**: Use production API keys
+- [ ] **HTTPS**: Ensure webhook URL uses HTTPS
+- [ ] **Webhook**: Test webhook endpoint responds with HTTP 200
+- [ ] **Signature**: Verify webhook signature validation is enabled
+- [ ] **Logging**: Disable detailed logging in production
+- [ ] **Error Handling**: Implement proper error handling for all payment flows
+- [ ] **Monitoring**: Set up alerts for payment failures
+
+### Common Issues & Solutions
+
+| Issue | Cause | Solution |
+|-------|-------|----------|
+| **"Access denied"** | Wrong credentials | Verify API keys in Vipps portal |
+| **"Invalid amount"** | Amount < 100 øre | Ensure minimum 1.00 NOK (100 øre) |
+| **"Order ID exists"** | Duplicate order ID | Use unique order identifiers |
+| **"Webhook failed"** | Invalid signature | Check webhook secret configuration |
+| **"Payment expired"** | Not captured in time | Capture within reservation period |
+| **"Merchant not found"** | Wrong MSN | Verify Merchant Serial Number |
+
+## 🎨 Frontend Integration
+
+### Express Checkout Button
+
+The package includes a pre-built Blade component for express checkout:
+
+```blade
+{{-- resources/views/checkout.blade.php --}}
+@include('vipps::express-button', [
+    'amount' => 9900,
+    'currency' => 'NOK',
+    'orderId' => 'order-' . time(),
+    'description' => 'Product purchase',
+    'redirectUrl' => route('payment.callback'),
+    'theme' => 'orange',        // orange, white, white-outline
+    'size' => 'large',          // small, medium, large
+    'text' => 'Buy with Vipps'
+])
+```
+
+### Custom Frontend Implementation
+
+```javascript
+// Custom JavaScript integration
+async function createVippsPayment(paymentData) {
+    try {
+        const response = await fetch('/api/vipps/payment/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            },
+            body: JSON.stringify(paymentData)
+        });
+
+        const result = await response.json();
+        
+        if (result.url) {
+            // Redirect to Vipps
+            window.location.href = result.url;
+        } else {
+            throw new Error('Payment creation failed');
+        }
+    } catch (error) {
+        console.error('Payment error:', error);
+        showErrorMessage('Payment failed. Please try again.');
+    }
+}
+
+// Usage
+document.getElementById('vipps-pay-button').addEventListener('click', () => {
+    createVippsPayment({
+        amount: 9900,
+        currency: 'NOK',
+        orderId: 'order-' + Date.now(),
+        description: 'Product purchase',
+        redirectUrl: '/payment/callback'
+    });
+});
+```
+
+### React/Vue.js Integration
+
+```jsx
+// React component example
+import { useState } from 'react';
+
+const VippsPaymentButton = ({ amount, orderId, description }) => {
+    const [loading, setLoading] = useState(false);
+
+    const handlePayment = async () => {
+        setLoading(true);
+        
+        try {
+            const response = await fetch('/api/vipps/payment/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                },
+                body: JSON.stringify({
+                    amount,
+                    orderId,
+                    description,
+                    currency: 'NOK',
+                    redirectUrl: window.location.origin + '/payment/callback'
+                })
+            });
+
+            const result = await response.json();
+            if (result.url) {
+                window.location.href = result.url;
+            }
+        } catch (error) {
+            console.error('Payment failed:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <button 
+            onClick={handlePayment}
+            disabled={loading}
+            className="vipps-button"
+        >
+            {loading ? 'Processing...' : 'Pay with Vipps'}
+        </button>
+    );
+};
+```
+
+## 🚀 Deployment Guide
+
+### Environment Setup
+
+#### Production Environment Variables
+```env
+# Production Configuration
+VIPPS_ENVIRONMENT=production
+VIPPS_CLIENT_ID=your_production_client_id
+VIPPS_CLIENT_SECRET=your_production_client_secret
+VIPPS_SUBSCRIPTION_KEY=your_production_subscription_key
+VIPPS_MERCHANT_SERIAL_NUMBER=your_production_msn
+
+# Webhook Security
+VIPPS_WEBHOOK_SECRET=your_production_webhook_secret
+
+# Performance & Monitoring
+VIPPS_LOGGING_ENABLED=true
+VIPPS_LOG_LEVEL=error
+```
+
+#### Server Requirements
+- **PHP 8.1+** with extensions: `json`, `openssl`, `curl`
+- **HTTPS required** for production webhooks
+- **Firewall**: Allow outbound HTTPS (443) to `api.vipps.no`
+- **Memory**: Minimum 128MB PHP memory limit
+
+### Docker Deployment
+
+```dockerfile
+# Dockerfile
+FROM php:8.1-fpm-alpine
+
+# Install required extensions
+RUN docker-php-ext-install json openssl
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Copy application
+COPY . /var/www/html
+WORKDIR /var/www/html
+
+# Install dependencies
+RUN composer install --no-dev --optimize-autoloader
+
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html
+```
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+services:
+  app:
+    build: .
+    environment:
+      - VIPPS_ENVIRONMENT=production
+      - VIPPS_CLIENT_ID=${VIPPS_CLIENT_ID}
+      - VIPPS_CLIENT_SECRET=${VIPPS_CLIENT_SECRET}
+      - VIPPS_SUBSCRIPTION_KEY=${VIPPS_SUBSCRIPTION_KEY}
+      - VIPPS_MERCHANT_SERIAL_NUMBER=${VIPPS_MERCHANT_SERIAL_NUMBER}
+      - VIPPS_WEBHOOK_SECRET=${VIPPS_WEBHOOK_SECRET}
+    ports:
+      - "80:80"
+      - "443:443"
+```
+
+### Load Balancer Configuration
+
+```nginx
+# nginx.conf
+upstream laravel {
+    server app1:9000;
+    server app2:9000;
+}
+
+server {
+    listen 443 ssl;
+    server_name yourdomain.com;
+
+    # SSL configuration
+    ssl_certificate /path/to/certificate.pem;
+    ssl_certificate_key /path/to/private.key;
+
+    # Webhook endpoint
+    location /vipps/webhook {
+        proxy_pass http://laravel;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        # Important: Preserve request body for signature verification
+        proxy_request_buffering off;
+    }
+}
+```
+
+### Monitoring & Alerting
+
+```php
+// app/Console/Commands/VippsHealthCheck.php
+<?php
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use Mrdulal\LaravelVipps\Services\VippsClient;
+
+class VippsHealthCheck extends Command
+{
+    protected $signature = 'vipps:health-check';
+    protected $description = 'Check Vipps API connectivity';
+
+    public function handle()
+    {
+        try {
+            $client = app(VippsClient::class);
+            $token = $client->getAccessToken();
+            
+            $this->info('✅ Vipps API is accessible');
+            $this->info('Token: ' . substr($token, 0, 20) . '...');
+            
+            return 0;
+        } catch (\Exception $e) {
+            $this->error('❌ Vipps API check failed: ' . $e->getMessage());
+            return 1;
+        }
+    }
+}
+```
+
+```bash
+# Cron job for health checks
+# /etc/cron.d/vipps-health-check
+*/5 * * * * php /path/to/artisan vipps:health-check || echo "Vipps API down" | mail -s "Alert: Vipps API Issue" admin@yourdomain.com
+```
+
+## 📊 Performance Optimization
+
+### Caching Strategy
+
+```php
+// Optimize access token caching
+'cache' => [
+    'enabled' => true,
+    'ttl' => 3600,              // 1 hour (tokens are valid for 1 hour)
+    'store' => 'redis',         // Use Redis for better performance
+],
+```
+
+### Queue Configuration
+
+```php
+// Queue webhook processing for better performance
+// app/Listeners/HandlePaymentCompleted.php
+class HandlePaymentCompleted implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    public $queue = 'vipps-webhooks';
+    public $timeout = 60;
+    public $tries = 3;
+
+    public function handle(PaymentCompleted $event): void
+    {
+        // Process payment completion
+    }
+}
+```
+
+### Database Optimization
+
+```php
+// Add indexes for better query performance
+Schema::table('vipps_payments', function (Blueprint $table) {
+    $table->index(['status', 'created_at']);
+    $table->index(['merchant_serial_number', 'order_id']);
+});
+```
+
+## 📚 Resources & References
+
+### Official Documentation
+- **[Vipps MobilePay Developer Portal](https://developer.vippsmobilepay.com/)** - Official API documentation
+- **[Vipps MobilePay Business Portal](https://portal.vippsmobilepay.com/)** - Get API credentials
+- **[API Reference](https://developer.vippsmobilepay.com/api/)** - Complete API specification
+
+### Laravel Resources
+- **[Laravel Package Development](https://laravel.com/docs/packages)** - Official Laravel documentation
+- **[Service Providers](https://laravel.com/docs/providers)** - Understanding Laravel service providers
+- **[Events & Listeners](https://laravel.com/docs/events)** - Laravel event system
+
+### Community & Support
+- **[GitHub Issues](https://github.com/mrdulal/laravel-vipps/issues)** - Bug reports and feature requests
+- **[Discussions](https://github.com/mrdulal/laravel-vipps/discussions)** - Community discussions
+- **[Stack Overflow](https://stackoverflow.com/questions/tagged/vipps+laravel)** - Q&A with the community
+
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on:
+
+- Development setup
+- Coding standards (PSR-12)
+- Testing requirements
+- Pull request process
+- Code review guidelines
+
+### Quick Contribution Guide
+
+```bash
+# 1. Fork and clone the repository
+git clone https://github.com/yourusername/laravel-vipps.git
+cd laravel-vipps
+
+# 2. Install dependencies
+composer install
+
+# 3. Run tests
+composer test
+
+# 4. Make your changes and add tests
+# 5. Ensure all tests pass
+composer test
+
+# 6. Submit a pull request
+```
+
+## 🔒 Security
+
+### Reporting Security Vulnerabilities
+
+Please **DO NOT** report security vulnerabilities through public GitHub issues. Instead:
+
+1. Email security issues to: **security@example.com**
+2. Include detailed information about the vulnerability
+3. Allow reasonable time for response before public disclosure
+
+### Security Best Practices
+
+- Always use HTTPS in production
+- Keep webhook secrets secure and rotate regularly
+- Validate all webhook signatures
+- Log security events for monitoring
+- Keep the package updated to latest version
+
+## 📄 License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-## Links
+## 🏆 Credits
 
-- [Vipps MobilePay Developer Documentation](https://developer.vippsmobilepay.com/)
-- [Vipps MobilePay Portal](https://portal.vippsmobilepay.com/)
-- [Laravel Package Development](https://laravel.com/docs/packages)
+### Core Contributors
+- **[Mr Dulal](https://github.com/mrdulal)** - Package author and maintainer
+
+### Acknowledgments
+- **Vipps MobilePay** - For providing the payment platform and API
+- **Laravel Community** - For the excellent framework and ecosystem
+- **Contributors** - All community members who help improve this package
+
+---
+
+<div align="center">
+
+**⭐ Star this repository if it helped you!**
+
+[Report Bug](https://github.com/mrdulal/laravel-vipps/issues) • [Request Feature](https://github.com/mrdulal/laravel-vipps/issues) • [Documentation](https://github.com/mrdulal/laravel-vipps/wiki)
+
+</div>

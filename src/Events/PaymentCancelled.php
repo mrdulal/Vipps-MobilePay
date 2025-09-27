@@ -1,6 +1,6 @@
 <?php
 
-namespace SushriDad\LaravelVipps\Events;
+namespace Mrdulal\LaravelVipps\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;

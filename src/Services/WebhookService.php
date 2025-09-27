@@ -1,17 +1,17 @@
 <?php
 
-namespace SushriDad\LaravelVipps\Services;
+namespace Mrdulal\LaravelVipps\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use SushriDad\LaravelVipps\Exceptions\VippsException;
-use SushriDad\LaravelVipps\Events\PaymentCompleted;
-use SushriDad\LaravelVipps\Events\PaymentCancelled;
-use SushriDad\LaravelVipps\Events\PaymentCaptured;
-use SushriDad\LaravelVipps\Events\PaymentRefunded;
-use SushriDad\LaravelVipps\Events\PaymentCreated;
-use SushriDad\LaravelVipps\Events\RecurringAgreementCreated;
-use SushriDad\LaravelVipps\Events\RecurringChargeCreated;
+use Mrdulal\LaravelVipps\Exceptions\VippsException;
+use Mrdulal\LaravelVipps\Events\PaymentCompleted;
+use Mrdulal\LaravelVipps\Events\PaymentCancelled;
+use Mrdulal\LaravelVipps\Events\PaymentCaptured;
+use Mrdulal\LaravelVipps\Events\PaymentRefunded;
+use Mrdulal\LaravelVipps\Events\PaymentCreated;
+use Mrdulal\LaravelVipps\Events\RecurringAgreementCreated;
+use Mrdulal\LaravelVipps\Events\RecurringChargeCreated;
 
 class WebhookService
 {

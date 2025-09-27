@@ -1,11 +1,11 @@
 <?php
 
-namespace SushriDad\LaravelVipps\Http\Controllers;
+namespace Mrdulal\LaravelVipps\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use SushriDad\LaravelVipps\Services\WebhookService;
-use SushriDad\LaravelVipps\Exceptions\VippsException;
+use Mrdulal\LaravelVipps\Services\WebhookService;
+use Mrdulal\LaravelVipps\Exceptions\VippsException;
 
 class WebhookController
 {

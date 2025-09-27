@@ -1,15 +1,15 @@
 <?php
 
-namespace SushriDad\LaravelVipps;
+namespace Mrdulal\LaravelVipps;
 
 use Illuminate\Support\ServiceProvider;
-use SushriDad\LaravelVipps\Services\VippsClient;
-use SushriDad\LaravelVipps\Services\EPaymentService;
-use SushriDad\LaravelVipps\Services\CheckoutService;
-use SushriDad\LaravelVipps\Services\ExpressService;
-use SushriDad\LaravelVipps\Services\RecurringService;
-use SushriDad\LaravelVipps\Services\OrderManagementService;
-use SushriDad\LaravelVipps\Services\WebhookService;
+use Mrdulal\LaravelVipps\Services\VippsClient;
+use Mrdulal\LaravelVipps\Services\EPaymentService;
+use Mrdulal\LaravelVipps\Services\CheckoutService;
+use Mrdulal\LaravelVipps\Services\ExpressService;
+use Mrdulal\LaravelVipps\Services\RecurringService;
+use Mrdulal\LaravelVipps\Services\OrderManagementService;
+use Mrdulal\LaravelVipps\Services\WebhookService;
 
 class VippsServiceProvider extends ServiceProvider
 {

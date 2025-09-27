@@ -1,13 +1,13 @@
 {
-    "name": "sushridad/laravel-vipps",
+    "name": "mrdulal/laravel-vipps",
     "description": "Laravel package for MobilePay Vipps payment integration with ePayment, Checkout, Express, and recurring payments support",
     "type": "library",
     "keywords": ["laravel", "vipps", "mobilepay", "payment", "checkout", "express", "recurring", "subscription"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Sushri Dad",
-            "email": "sushri@example.com"
+            "name": "Mr Dulal",
+            "email": "dulal@example.com"
         }
     ],
     "require": {
@@ -26,21 +26,21 @@
     },
     "autoload": {
         "psr-4": {
-            "SushriDad\\LaravelVipps\\": "src/"
+            "Mrdulal\\LaravelVipps\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SushriDad\\LaravelVipps\\Tests\\": "tests/"
+            "Mrdulal\\LaravelVipps\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "SushriDad\\LaravelVipps\\VippsServiceProvider"
+                "Mrdulal\\LaravelVipps\\VippsServiceProvider"
             ],
             "aliases": {
-                "Vipps": "SushriDad\\LaravelVipps\\Facades\\Vipps"
+                "Vipps": "Mrdulal\\LaravelVipps\\Facades\\Vipps"
             }
         }
     },

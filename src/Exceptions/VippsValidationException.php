@@ -1,6 +1,6 @@
 <?php
 
-namespace SushriDad\LaravelVipps\Exceptions;
+namespace Mrdulal\LaravelVipps\Exceptions;
 
 class VippsValidationException extends VippsException
 {

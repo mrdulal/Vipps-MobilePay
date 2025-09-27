@@ -1,13 +1,13 @@
 <?php
 
-namespace SushriDad\LaravelVipps\Services;
+namespace Mrdulal\LaravelVipps\Services;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
-use SushriDad\LaravelVipps\Exceptions\VippsException;
-use SushriDad\LaravelVipps\Exceptions\VippsApiException;
+use Mrdulal\LaravelVipps\Exceptions\VippsException;
+use Mrdulal\LaravelVipps\Exceptions\VippsApiException;
 
 class VippsClient
 {

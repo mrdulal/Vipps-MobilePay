@@ -1,8 +1,8 @@
 <?php
 
-namespace SushriDad\LaravelVipps\Services;
+namespace Mrdulal\LaravelVipps\Services;
 
-use SushriDad\LaravelVipps\Exceptions\VippsValidationException;
+use Mrdulal\LaravelVipps\Exceptions\VippsValidationException;
 use Illuminate\Support\Facades\Validator;
 
 class OrderManagementService
