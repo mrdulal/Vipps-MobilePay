@@ -12,12 +12,14 @@ Add the GitHub Packages repository to your project's `composer.json`:
 {
     "repositories": [
         {
-            "type": "composer",
-            "url": "https://composer.github.com/mrdulal/Vipps-MobilePay"
+            "type": "vcs",
+            "url": "https://github.com/mrdulal/Vipps-MobilePay.git"
         }
     ]
 }
 ```
+
+> **Note**: GitHub Packages for Composer repositories are primarily for private packages. For public packages like this one, using the VCS repository type is more appropriate.
 
 ### Step 2: Authenticate with GitHub
 
@@ -148,8 +150,8 @@ Ensure the repository is added to your `composer.json`:
 {
     "repositories": [
         {
-            "type": "composer",
-            "url": "https://composer.github.com/mrdulal/Vipps-MobilePay"
+            "type": "vcs",
+            "url": "https://github.com/mrdulal/Vipps-MobilePay.git"
         }
     ]
 }
