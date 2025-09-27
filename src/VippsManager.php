@@ -1,0 +1,69 @@
+<?php
+
+namespace SushriDad\LaravelVipps;
+
+use Illuminate\Container\Container;
+use SushriDad\LaravelVipps\Services\EPaymentService;
+use SushriDad\LaravelVipps\Services\CheckoutService;
+use SushriDad\LaravelVipps\Services\ExpressService;
+use SushriDad\LaravelVipps\Services\RecurringService;
+use SushriDad\LaravelVipps\Services\OrderManagementService;
+use SushriDad\LaravelVipps\Services\WebhookService;
+
+class VippsManager
+{
+    protected Container $app;
+
+    public function __construct(Container $app)
+    {
+        $this->app = $app;
+    }
+
+    /**
+     * Get the ePayment service instance.
+     */
+    public function ePayment(): EPaymentService
+    {
+        return $this->app->make(EPaymentService::class);
+    }
+
+    /**
+     * Get the Checkout service instance.
+     */
+    public function checkout(): CheckoutService
+    {
+        return $this->app->make(CheckoutService::class);
+    }
+
+    /**
+     * Get the Express service instance.
+     */
+    public function express(): ExpressService
+    {
+        return $this->app->make(ExpressService::class);
+    }
+
+    /**
+     * Get the Recurring service instance.
+     */
+    public function recurring(): RecurringService
+    {
+        return $this->app->make(RecurringService::class);
+    }
+
+    /**
+     * Get the Order Management service instance.
+     */
+    public function orderManagement(): OrderManagementService
+    {
+        return $this->app->make(OrderManagementService::class);
+    }
+
+    /**
+     * Get the Webhook service instance.
+     */
+    public function webhook(): WebhookService
+    {
+        return $this->app->make(WebhookService::class);
+    }
+}
