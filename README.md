@@ -5,8 +5,7 @@
 [![License](https://img.shields.io/github/license/mrdulal/Vipps-MobilePay.svg?style=flat-square)](https://github.com/mrdulal/Vipps-MobilePay/blob/main/LICENSE)
 [![PHP Version Require](https://img.shields.io/packagist/php-v/mrdulal/laravel-vipps.svg?style=flat-square)](https://packagist.org/packages/mrdulal/laravel-vipps)
 [![Laravel Support](https://img.shields.io/badge/Laravel-9%2B-orange.svg?style=flat-square)](https://laravel.com)
-[![Tests](https://img.shields.io/github/actions/workflow/status/mrdulal/Vipps-MobilePay/tests.yml?label=tests&style=flat-square)](https://github.com/mrdulal/Vipps-MobilePay/actions)
-[![Tests](https://img.shields.io/github/actions/workflow/status/mrdulal/laravel-vipps/tests.yml?label=tests&style=flat-square)](https://github.com/mrdulal/laravel-vipps/actions)
+[![Tests](https://img.shields.io/github/actions/workflow/status/mrdulal/Vipps-MobilePay/tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/mrdulal/Vipps-MobilePay/actions)
 
 A comprehensive Laravel package for MobilePay Vipps payment integration with support for all major Vipps payment methods. This package provides a clean, modern API for integrating with the Vipps MobilePay payment platform used across Norway, Denmark, and Finland.
 
