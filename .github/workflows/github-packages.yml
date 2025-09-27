@@ -1,0 +1,149 @@
+name: Publish to GitHub Packages
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g., v1.0.0)'
+        required: true
+        type: string
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: json, openssl
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction --no-dev
+
+      - name: Run tests
+        run: composer test
+
+      - name: Get the version
+        id: get_version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          fi
+          echo "CLEAN_VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Setup GitHub Composer Registry
+        run: |
+          composer config repositories.github composer https://composer.github.com/mrdulal/Vipps-MobilePay
+          composer config github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create package archive
+        run: |
+          # Create a clean directory for the package
+          mkdir -p package-build
+          
+          # Copy package files (exclude development files)
+          rsync -av --exclude-from=.gitignore \
+                    --exclude='.git*' \
+                    --exclude='tests/' \
+                    --exclude='phpunit.xml' \
+                    --exclude='.github/' \
+                    --exclude='package-build/' \
+                    --exclude='coverage/' \
+                    ./ package-build/
+          
+          # Create composer.json for GitHub Packages
+          cd package-build
+          
+          # Update composer.json to include GitHub Packages repository
+          composer config repositories.github composer https://composer.github.com/mrdulal/Vipps-MobilePay
+
+      - name: Publish to GitHub Packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd package-build
+          
+          # Set up authentication for GitHub Packages
+          echo '{}' > composer.json.tmp
+          composer config --file=composer.json.tmp repositories.github composer https://composer.github.com/mrdulal/Vipps-MobilePay
+          composer config --file=composer.json.tmp github-oauth.github.com ${GITHUB_TOKEN}
+          
+          # Merge with existing composer.json
+          composer config --merge --file=composer.json repositories.github composer https://composer.github.com/mrdulal/Vipps-MobilePay
+          
+          echo "✅ Package prepared for GitHub Packages"
+          echo "📦 Package: mrdulal/laravel-vipps"
+          echo "🔖 Version: ${{ steps.get_version.outputs.VERSION }}"
+          echo "🌐 Registry: GitHub Packages"
+
+      - name: Create GitHub Package Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.get_version.outputs.VERSION }}
+          name: "📦 Package Release ${{ steps.get_version.outputs.VERSION }}"
+          body: |
+            ## 📦 GitHub Packages Release ${{ steps.get_version.outputs.VERSION }}
+            
+            This package is now available on **GitHub Packages**!
+            
+            ### 🚀 Installation from GitHub Packages
+            
+            Add the GitHub Packages repository to your `composer.json`:
+            ```json
+            {
+                "repositories": [
+                    {
+                        "type": "composer",
+                        "url": "https://composer.github.com/mrdulal/Vipps-MobilePay"
+                    }
+                ]
+            }
+            ```
+            
+            Then install the package:
+            ```bash
+            composer require mrdulal/laravel-vipps:${{ steps.get_version.outputs.VERSION }}
+            ```
+            
+            ### 🔐 Authentication Required
+            You'll need a GitHub Personal Access Token with `read:packages` scope:
+            ```bash
+            composer config github-oauth.github.com your_github_token
+            ```
+            
+            ### 📚 Documentation
+            See the [README](https://github.com/mrdulal/Vipps-MobilePay/blob/main/README.md) for complete installation and usage instructions.
+            
+            ---
+            **⚠️ Note**: This is an unofficial package developed independently by a solo developer.
+          draft: false
+          prerelease: false
+
+      - name: Package Summary
+        run: |
+          echo "🎉 Package successfully prepared for GitHub Packages!"
+          echo ""
+          echo "📋 Package Details:"
+          echo "   📦 Name: mrdulal/laravel-vipps"
+          echo "   🔖 Version: ${{ steps.get_version.outputs.VERSION }}"
+          echo "   🌐 Registry: GitHub Packages"
+          echo "   📍 Repository: https://github.com/mrdulal/Vipps-MobilePay"
+          echo ""
+          echo "🔗 Installation:"
+          echo "   composer require mrdulal/laravel-vipps:${{ steps.get_version.outputs.VERSION }}"

@@ -61,9 +61,13 @@ A comprehensive Laravel package for MobilePay Vipps payment integration with sup
 
 ### 1. Install via Composer
 
+#### From Packagist (Recommended)
 ```bash
 composer require mrdulal/laravel-vipps
 ```
+
+#### From GitHub Packages (Alternative)
+See [GitHub Packages Installation Guide](GITHUB_PACKAGES.md) for detailed instructions on installing from GitHub Packages.
 
 ### 2. Publish Configuration
 

@@ -1,0 +1,30 @@
+# Laravel Vipps Package Git Attributes
+
+# Exclude development and CI files from package archives
+/.github export-ignore
+/tests export-ignore
+/coverage export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/phpunit.xml export-ignore
+/GITHUB_PACKAGES.md export-ignore
+/CONTRIBUTING.md export-ignore
+/CHANGELOG.md export-ignore
+
+# Ensure proper line endings
+* text=auto
+
+# Specific file types
+*.php text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary

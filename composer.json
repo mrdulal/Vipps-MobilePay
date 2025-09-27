@@ -49,6 +49,12 @@
         "test": "phpunit",
         "test-coverage": "phpunit --coverage-html coverage"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://composer.github.com/mrdulal/Vipps-MobilePay"
+        }
+    ],
     "support": {
         "issues": "https://github.com/mrdulal/Vipps-MobilePay/issues",
         "source": "https://github.com/mrdulal/Vipps-MobilePay"
